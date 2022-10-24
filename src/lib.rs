@@ -4,7 +4,7 @@ use embedded_hal::digital::v2::OutputPin;
 use embedded_hal::timer::CountDown;
 use fugit::ExtU32;
 
-struct LedDisplay<PC, PD>
+pub struct LedDisplay<PC, PD>
 where
     PC: OutputPin,
     PD: OutputPin,
@@ -134,7 +134,7 @@ where
         self.write(timer, &buffer);
     }
 
-    fn show_number<T: CountDown>(&mut self, timer: &mut T, num: i32)
+    pub fn show_number<T: CountDown>(&mut self, timer: &mut T, num: i32)
     where
         <T as CountDown>::Time: From<fugit::MicrosDuration<u32>>,
     {
